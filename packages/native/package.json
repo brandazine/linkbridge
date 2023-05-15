@@ -70,13 +70,6 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
-  },
   "eslintConfig": {
     "root": true,
     "extends": [
