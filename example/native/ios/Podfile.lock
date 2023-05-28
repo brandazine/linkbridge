@@ -343,6 +343,8 @@ PODS:
   - React-jsinspector (0.72.0-rc.1)
   - React-logger (0.72.0-rc.1):
     - glog
+  - react-native-webview (12.0.2):
+    - React-Core
   - React-NativeModulesApple (0.72.0-rc.1):
     - hermes-engine
     - React-callinvoker
@@ -485,6 +487,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -560,6 +563,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -626,6 +631,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 414fbc6d50f1f89be2600b723a27c6070076d650
   React-jsinspector: 55ad52bf7b4102102c6a2ad6e881b06d56f8eb43
   React-logger: 264ccba40e268580a95fb9d514c315d2ec7339a5
+  react-native-webview: 203b6a1c7507737f777c91d7e10c30e7e67c1a17
   React-NativeModulesApple: 018405f985ae4488c4fe29deaaf2f8fc7a87f5d0
   React-perflogger: 0c4141a3eba3fe922d53b98900cfeeefe9d78de0
   React-RCTActionSheet: bde19fb7124b692941e772a7c83925bbeddfa0cb

@@ -5,20 +5,14 @@
  * @format
  */
 
-import React, {useEffect, useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import {multiply} from '@linkbridge/native';
+import React from 'react';
+import {SafeAreaView} from 'react-native';
+import {Webview} from './src/bridge';
 
 function App(): JSX.Element {
-  const [num, setNum] = useState(0);
-
-  useEffect(() => {
-    multiply(3, 3).then(res => setNum(res));
-  }, []);
-
   return (
-    <SafeAreaView>
-      <Text style={{fontSize: 26}}>{num}</Text>
+    <SafeAreaView style={{height: '100%'}}>
+      <Webview style={{height: '100%', flex: 1, width: '100%'}} />
     </SafeAreaView>
   );
 }
