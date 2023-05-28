@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
+  }
 }
