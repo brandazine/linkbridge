@@ -11,15 +11,11 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // console.log(bridge);
-    // if (count === 1) {
-    //   alert(JSON.stringify(bridge));
-    // }
-    if (count === 2) {
-      bridge.openInAppBrowser().then((v) => console.log(v));
-    }
+    bridge.openInAppBrowser().then((v) => console.log(v));
     if (count === 3) {
-      bridge.openInAppBrowser2("안뇽").then((v) => console.log(v));
+      bridge
+        .openInAppBrowser2("안뇽" + Math.random().toFixed(4))
+        .then((v) => console.log(v));
     }
     console.log(count);
   }, [count]);

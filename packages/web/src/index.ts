@@ -32,6 +32,7 @@ export const createBridge = <T = unknown>(
 
           window.ReactNativeWebView.postMessage(
             JSON.stringify({
+              type: "bridge",
               method: name,
               args,
             })

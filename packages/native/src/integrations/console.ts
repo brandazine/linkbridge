@@ -8,24 +8,22 @@ export const CONSOLE_INTEGRATIONS_SCRIPTS = dedent`
 
   console.log = function() {
     var message = Array.from(arguments).join(' ');
-    window.ReactNativeWebView.postMessage(JSON.stringify({ logType: 'log', message }));
+    window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'log', method: 'log',args: message }));
     originalConsoleLog.apply(console, arguments);
   };
 
   console.error = function() {
     var message = Array.from(arguments).join(' ');
-    window.ReactNativeWebView.postMessage(JSON.stringify({ logType: 'error', message }));
+    window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'log', method: 'error', args: message }));
     originalConsoleError.apply(console, arguments);
   };
 
   console.warn = function() {
     var message = Array.from(arguments).join(' ');
-    window.ReactNativeWebView.postMessage(JSON.stringify({ logType: 'warn', message }));
+    window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'log', method: 'warn', args: message }));
     originalConsoleWarn.apply(console, arguments);
   };
 };
-
-true;
 `;
 
 export const handleLog = (logType: 'log' | 'error' | 'warn', message?: any) => {
