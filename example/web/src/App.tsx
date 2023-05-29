@@ -16,10 +16,10 @@ function App() {
     //   alert(JSON.stringify(bridge));
     // }
     if (count === 2) {
-      bridge.openInAppBrowser().then((v) => alert(JSON.stringify(v)));
+      bridge.openInAppBrowser().then((v) => console.log(v));
     }
     if (count === 3) {
-      bridge.openInAppBrowser2("안뇽").then((v) => alert(JSON.stringify(v)));
+      bridge.openInAppBrowser2("안뇽").then((v) => console.log(v));
     }
     console.log(count);
   }, [count]);

@@ -1,19 +1,21 @@
 import WebView, {type  WebViewProps } from 'react-native-webview';
-import {  bridge } from './bridge';
+import type { Procedure, ProceduresObject } from './bridge';
 import { createRef } from 'react';
 import dedent from "ts-dedent";
+import { CONSOLE_INTEGRATIONS_SCRIPTS, handleLog } from './integrations';
 
 type LinkBridgePersist = {
   localStorage: string[]
 }
 
 interface CreateWebviewArgs {
-  bridge: ReturnType<typeof bridge>;
+  bridge: ProceduresObject<Record<string, Procedure>>;
   host: string;
-  persist: LinkBridgePersist;
-} 
+  persist?: LinkBridgePersist;
+  console?: boolean;
+}
 
-export const createWebview = ({ bridge,host }: CreateWebviewArgs) => {
+export const createWebview = ({ bridge, host, console }: CreateWebviewArgs) => {
   const webviewRef = createRef<WebView>();
 
   const bridgeNames = Object.values(bridge ?? {})
@@ -27,7 +29,13 @@ export const createWebview = ({ bridge,host }: CreateWebviewArgs) => {
     ref={webviewRef}
     source={{ uri: host }}
     onMessage={async (event) => {
-      const {method , args} = JSON.parse(event.nativeEvent.data);
+      const {method , args, logType, message} = JSON.parse(event.nativeEvent.data);
+
+      if(console && logType) {
+        handleLog(logType,message);
+        return;
+      }
+
       const response = await bridge[method]?.(...args);
 
       webviewRef.current?.injectJavaScript(dedent`
@@ -41,6 +49,7 @@ export const createWebview = ({ bridge,host }: CreateWebviewArgs) => {
       
       true;
       `}
+    injectedJavaScript={[console && CONSOLE_INTEGRATIONS_SCRIPTS].filter(Boolean).join('\n')}
     
     {...props} />
   };
