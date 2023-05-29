@@ -5,11 +5,12 @@ import "./App.css";
 import { createBridge } from "@linkbridge/web";
 import type { AppBridge } from "@linkbridge/example-native";
 
+const bridge = createBridge<AppBridge>();
+
 function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const bridge = createBridge<AppBridge>();
     // console.log(bridge);
     // if (count === 1) {
     //   alert(JSON.stringify(bridge));

@@ -13,7 +13,7 @@ interface CreateWebviewArgs {
   persist: LinkBridgePersist;
 } 
 
-export const createWebview = ({ bridge,host,persist }: CreateWebviewArgs) => {
+export const createWebview = ({ bridge,host }: CreateWebviewArgs) => {
   const webviewRef = createRef<WebView>();
 
   const bridgeNames = Object.values(bridge ?? {})
@@ -32,10 +32,11 @@ export const createWebview = ({ bridge,host,persist }: CreateWebviewArgs) => {
 
       webviewRef.current?.injectJavaScript(dedent`
       window.bridgeEmitter.emit('${method}',${JSON.stringify(response)});
+    
       true;
       `);
     }}
-      injectedJavaScript={dedent`
+    injectedJavaScriptBeforeContentLoaded={dedent`
       window.__bridgeSchema__ = [${bridgeNames}];
       
       true;
