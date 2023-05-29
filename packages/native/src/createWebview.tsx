@@ -1,8 +1,7 @@
 import WebView, {type  WebViewProps } from 'react-native-webview';
 import type { Procedure, ProceduresObject } from './integrations';
-import { CONSOLE_INTEGRATIONS_SCRIPTS, handleLog, handleBridge } from './integrations';
+import { INTEGRATIONS_SCRIPTS_CONSOLE, INTEGRATIONS_SCRIPTS_BRIDGE, handleLog, handleBridge } from './integrations';
 import { createRef } from 'react';
-import dedent from "ts-dedent";
 
 type LinkBridgePersist = {
   localStorage: string[]
@@ -45,12 +44,8 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
           return;
       }
     }}
-    injectedJavaScriptBeforeContentLoaded={dedent`
-      window.__bridgeSchema__ = [${bridgeNames}];
-      
-      true;
-      `}
-    injectedJavaScript={[console && CONSOLE_INTEGRATIONS_SCRIPTS, 'true;'].filter(Boolean).join('\n')}
+    injectedJavaScriptBeforeContentLoaded={[INTEGRATIONS_SCRIPTS_BRIDGE(bridgeNames), 'true;'].filter(Boolean).join('\n')}
+    injectedJavaScript={[console && INTEGRATIONS_SCRIPTS_CONSOLE, 'true;'].filter(Boolean).join('\n')}
     
     {...props} />
   };

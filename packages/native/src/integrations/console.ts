@@ -1,6 +1,6 @@
 import dedent from 'ts-dedent';
 
-export const CONSOLE_INTEGRATIONS_SCRIPTS = dedent`
+export const INTEGRATIONS_SCRIPTS_CONSOLE = dedent`
 {
   const originalConsoleLog = console.log;
   const originalConsoleError = console.error;

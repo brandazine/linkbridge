@@ -39,3 +39,7 @@ export const handleBridge = async ({
     true;
   `);
 };
+
+export const INTEGRATIONS_SCRIPTS_BRIDGE = (bridgeNames: string) => dedent`
+    window.__bridgeSchema__ = [${bridgeNames}];
+`;
