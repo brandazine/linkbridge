@@ -18,6 +18,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "nanoevents": "^7.0.1"
+    "nanoevents": "^7.0.1",
+    "nanoid": "^4.0.2"
   }
 }

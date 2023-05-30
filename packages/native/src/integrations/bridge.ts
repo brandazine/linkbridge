@@ -23,6 +23,7 @@ type HandleBridgeArgs = {
   method: string;
   args?: any;
   webview: WebView;
+  eventId: string;
 };
 
 export const handleBridge = async ({
@@ -30,11 +31,14 @@ export const handleBridge = async ({
   method,
   args,
   webview,
+  eventId,
 }: HandleBridgeArgs) => {
   const response = await bridge[method]?.(...args);
 
   webview.injectJavaScript(dedent`
-    window.bridgeEmitter.emit('${method}',${JSON.stringify(response)});
+    window.bridgeEmitter.emit('${method}-${eventId}',${JSON.stringify(
+    response
+  )});
   
     true;
   `);

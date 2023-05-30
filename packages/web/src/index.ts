@@ -1,5 +1,5 @@
 import { createNanoEvents } from "nanoevents";
-
+import { nanoid } from "nanoid/non-secure";
 const emitter = createNanoEvents();
 
 export const createBridge = <T = unknown>(
@@ -16,12 +16,14 @@ export const createBridge = <T = unknown>(
     window.bridgeEmitter = emitter;
   }
 
-  return bridgeSchema.reduce((acc, name) => {
+  return bridgeSchema.reduce((acc, method) => {
     return {
       ...acc,
-      [name]: (...args: any[]) => {
+      [method]: (...args: any[]) => {
+        const eventId = nanoid();
+
         return new Promise((resolve, reject) => {
-          const unbind = emitter.on(`${name}`, (data) => {
+          const unbind = emitter.on(`${method}-${eventId}`, (data) => {
             unbind();
             resolve(data);
           });
@@ -33,7 +35,8 @@ export const createBridge = <T = unknown>(
           window.ReactNativeWebView.postMessage(
             JSON.stringify({
               type: "bridge",
-              method: name,
+              method,
+              eventId,
               args,
             })
           );

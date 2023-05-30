@@ -28,7 +28,7 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
     ref={webviewRef}
     source={{ uri: host }}
     onMessage={async (event) => {
-      const {method, args, type} = JSON.parse(event.nativeEvent.data);
+      const {method, args, type, eventId} = JSON.parse(event.nativeEvent.data);
 
       switch(type) {
         case 'log':
@@ -39,6 +39,7 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
             bridge,
             method,
             args,
+            eventId,
             webview: webviewRef.current,
           });
           return;
