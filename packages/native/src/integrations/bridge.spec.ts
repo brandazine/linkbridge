@@ -1,4 +1,5 @@
 import { describe, expect } from '@jest/globals';
+
 import { bridge } from './bridge';
 
 describe('bridge procedures', () => {

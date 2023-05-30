@@ -1,3 +1,5 @@
+import type { DefaultEvents, Emitter } from "nanoevents";
+
 export {};
 
 declare global {

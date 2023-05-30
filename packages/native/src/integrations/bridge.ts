@@ -21,7 +21,7 @@ export const bridge: Bridge = (procedures) => {
 type HandleBridgeArgs = {
   bridge: ProceduresObject<Record<string, Procedure>>;
   method: string;
-  args?: any;
+  args?: unknown[];
   webview: WebView;
   eventId: string;
 };
@@ -33,7 +33,7 @@ export const handleBridge = async ({
   webview,
   eventId,
 }: HandleBridgeArgs) => {
-  const response = await bridge[method]?.(...args);
+  const response = await bridge[method]?.(...(args ?? []));
 
   webview.injectJavaScript(dedent`
     window.bridgeEmitter.emit('${method}-${eventId}',${JSON.stringify(

@@ -1,5 +1,6 @@
 import { createNanoEvents } from "nanoevents";
 import { nanoid } from "nanoid/non-secure";
+
 const emitter = createNanoEvents();
 
 export const createBridge = <T = unknown>(
@@ -19,7 +20,7 @@ export const createBridge = <T = unknown>(
   return bridgeSchema.reduce((acc, method) => {
     return {
       ...acc,
-      [method]: (...args: any[]) => {
+      [method]: (...args: unknown[]) => {
         const eventId = nanoid();
 
         return new Promise((resolve, reject) => {

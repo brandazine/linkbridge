@@ -26,7 +26,10 @@ export const INTEGRATIONS_SCRIPTS_CONSOLE = dedent`
 };
 `;
 
-export const handleLog = (logType: 'log' | 'error' | 'warn', message?: any) => {
+export const handleLog = (
+  logType: 'log' | 'error' | 'warn',
+  message?: unknown
+) => {
   switch (logType) {
     case 'log': {
       console.log('(Webview)', message);

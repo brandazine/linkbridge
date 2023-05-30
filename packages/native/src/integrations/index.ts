@@ -1,2 +1,2 @@
-export * from './console';
 export * from './bridge';
+export * from './console';
