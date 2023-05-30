@@ -16,7 +16,7 @@ interface CreateWebviewArgs {
 
 export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
   return {
-    Webview: (props: WebViewProps) => {
+    Webview: (props: Omit<WebViewProps, 'source'>) => {
       const webviewRef = useRef<WebView>(null);
 
       const bridgeNames = useMemo(() => Object.values(bridge ?? {})
@@ -30,6 +30,8 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
                 ref={webviewRef}
                 source={{ uri: host }}
                 onMessage={async (event) => {
+                  props.onMessage?.(event);
+                  
                   const {method, args, type, eventId} = JSON.parse(event.nativeEvent.data);
 
                   switch(type) {
@@ -47,12 +49,13 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
                       return;
                   }
                 }}
-                injectedJavaScriptBeforeContentLoaded={[INTEGRATIONS_SCRIPTS_BRIDGE(bridgeNames), 'true;'].filter(Boolean).join('\n')}
-                injectedJavaScript={[console && INTEGRATIONS_SCRIPTS_CONSOLE, 'true;'].filter(Boolean).join('\n')}
-                onNavigationStateChange={(navState) => {
-                  console.log("navState", navState);
-                }}
+                injectedJavaScriptBeforeContentLoaded={
+                  [INTEGRATIONS_SCRIPTS_BRIDGE(bridgeNames), props.injectedJavaScriptBeforeContentLoaded, 'true;'].filter(Boolean).join('\n')
+                }
+                injectedJavaScript={
+                  [console && INTEGRATIONS_SCRIPTS_CONSOLE, props.injectedJavaScript, 'true;'].filter(Boolean).join('\n')
+                }
                 {...props} />
-  }
+      }
   };
 };
