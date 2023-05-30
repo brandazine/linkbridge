@@ -1,12 +1,15 @@
 import {createWebview} from '@linkbridge/native';
 import {bridge} from '@linkbridge/native';
+import {InAppBrowser} from 'react-native-inappbrowser-reborn';
 
 export const appBridge = bridge({
-  openInAppBrowser: () => {
-    return 'ASD';
+  getMessage: () => {
+    return "I'm from native";
   },
-  openInAppBrowser2: async (arg: string) => {
-    return arg;
+  openInAppBrowser: async (url: string) => {
+    if (await InAppBrowser.isAvailable()) {
+      await InAppBrowser.open(url);
+    }
   },
 });
 
@@ -15,8 +18,5 @@ export type AppBridge = typeof appBridge;
 export const {Webview} = createWebview({
   bridge: appBridge,
   host: 'http://localhost:5173',
-  persist: {
-    localStorage: ['token'],
-  },
   debug: true,
 });

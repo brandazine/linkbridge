@@ -4,7 +4,8 @@
     "outDir": "dist",
     "noEmit": false,
     "emitDeclarationOnly": true,
-    "declaration": true
+    "declaration": true,
+    "types": ["react-native-webview"]
   },
   "include": ["src/bridge.ts"]
 }

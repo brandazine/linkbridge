@@ -437,6 +437,8 @@ PODS:
     - React-jsi (= 0.72.0-rc.1)
     - React-logger (= 0.72.0-rc.1)
     - React-perflogger (= 0.72.0-rc.1)
+  - RNInAppBrowser (3.7.0):
+    - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -503,6 +505,7 @@ DEPENDENCIES:
   - React-rncore (from `../node_modules/react-native/ReactCommon`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -595,6 +598,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNInAppBrowser:
+    :path: "../node_modules/react-native-inappbrowser-reborn"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -647,6 +652,7 @@ SPEC CHECKSUMS:
   React-rncore: 87ab86939b3582b26c869863502ac36511b56c58
   React-runtimeexecutor: 7024fd5cb9245856e8ea7aaa51c8cbf015573d17
   ReactCommon: 828a0dd88e28f3d2e09e24d4d3e37465d48ab317
+  RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 86188e8e04cfc605be9f53ace41cb942da148207
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

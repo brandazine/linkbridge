@@ -43,6 +43,9 @@ importers:
       react-native:
         specifier: 0.72.0-rc.1
         version: 0.72.0-rc.1(@babel/core@7.20.2)(@babel/preset-env@7.21.4)(react-test-renderer@18.2.0)(react@18.2.0)
+      react-native-inappbrowser-reborn:
+        specifier: ^3.7.0
+        version: 3.7.0(react-native@0.72.0-rc.1)
       react-native-webview:
         specifier: ^12.0.2
         version: 12.0.2(react-native@0.72.0-rc.1)(react@18.2.0)
@@ -8275,6 +8278,11 @@ packages:
     dependencies:
       is-wsl: 1.1.0
 
+  /opencollective-postinstall@2.0.3:
+    resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
+    hasBin: true
+    dev: false
+
   /optionator@0.9.1:
     resolution: {integrity: sha512-74RlY5FCnhq4jRxVUPKDaRwrVNXMqsGsiW6AJw4XK8hmtm10wC0ypZBLw5IIp85NZMr91+qd1RvvENwg7jjRFw==}
     engines: {node: '>= 0.8.0'}
@@ -8606,6 +8614,17 @@ packages:
   /react-native-gradle-plugin@0.71.17:
     resolution: {integrity: sha512-OXXYgpISEqERwjSlaCiaQY6cTY5CH6j73gdkWpK0hedxtiWMWgH+i5TOi4hIGYitm9kQBeyDu+wim9fA8ROFJA==}
     dev: true
+
+  /react-native-inappbrowser-reborn@3.7.0(react-native@0.72.0-rc.1):
+    resolution: {integrity: sha512-Ia53jYNtFcbNaX5W3QfOmN25I7bcvuDiQmSY5zABXjy4+WI20bPc9ua09li55F8yDCjv3C99jX6vKms68mBV7g==}
+    requiresBuild: true
+    peerDependencies:
+      react-native: '>=0.56'
+    dependencies:
+      invariant: 2.2.4
+      opencollective-postinstall: 2.0.3
+      react-native: 0.72.0-rc.1(@babel/core@7.20.2)(@babel/preset-env@7.21.4)(react-test-renderer@18.2.0)(react@18.2.0)
+    dev: false
 
   /react-native-webview@12.0.2(react-native@0.72.0-rc.1)(react@18.2.0):
     resolution: {integrity: sha512-vEnFOgVIYaUAQb437BOZdwTteUv3dkXkYOajalUkMDHNz91Zb35HaG6L49uUSFp4qYw46y/U3licKS1BOISDrg==}
