@@ -77,7 +77,7 @@ bridge.sum(1, 2).then(num => console.log(num); // expect 3
 ## Type Export Guide
 
 A better way to use linkbridge is to export the type of `bride` declared in native to the web.
-1. You can use private `monorepo` to export the type of native `bridge`. **(recommend)**
+1. You can use `monorepo` to export the type of native `bridge`. **(recommend)**
 2. You can use private npm registry to export the type of native `bridge`.
 3. You can use tsc to build a bridge decaration file to move the file.  
    (Note. https://github.com/brandazine/linkbridge/blob/main/example/native/tsconfig.bridge.json)
