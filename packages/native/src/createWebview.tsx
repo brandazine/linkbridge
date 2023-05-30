@@ -3,14 +3,9 @@ import type { Procedure, ProceduresObject } from './integrations';
 import { INTEGRATIONS_SCRIPTS_CONSOLE, INTEGRATIONS_SCRIPTS_BRIDGE, handleLog, handleBridge } from './integrations';
 import { useMemo, useRef } from 'react';
 
-type LinkBridgePersist = {
-  localStorage: string[]
-}
-
 interface CreateWebviewArgs {
   bridge: ProceduresObject<Record<string, Procedure>>;
   host: string;
-  persist?: LinkBridgePersist;
   debug?: boolean;
 }
 
