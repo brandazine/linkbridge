@@ -2,8 +2,13 @@
 # linkbridge
 [![NPM](https://img.shields.io/npm/v/@linkbridge/native)](https://www.npmjs.com/package/@linkbridge/native)
 
-DX-friendly webview interface to bridge with react-native and the web
+DX-friendly webview interface to bridge with react-native and the web.  
 
+Try registering a function in `bridge` in the react native code.  
+Available directly on the web and `Type-Safe`.  
+
+Inspired by `tRPC` and helps `react-native-webview` and `web` communicate.  
+  
 ![linkbridge](https://github.com/brandazine/linkbridge/assets/41789633/a96ecd6a-eb6b-4dd8-9805-421ff6dca26c)
 
 ## Installation
@@ -76,3 +81,7 @@ A better way to use linkbridge is to export the type of `bride` declared in nati
 2. You can use private npm registry to export the type of native `bridge`.
 3. You can use tsc to build a bridge decaration file to move the file.  
    (Note. https://github.com/brandazine/linkbridge/blob/main/example/native/tsconfig.bridge.json)
+   
+## Contributor Guide
+If you want a pull request for bugs or performance improvement, please check the following guide.  
+[CONTRIBUTING.md](https://github.com/brandazine/linkbridge/blob/main/CONTRIBUTING.md)
