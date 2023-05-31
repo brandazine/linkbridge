@@ -1,6 +1,6 @@
 # Contibutor Guide
 We are developing using pnpm. Please use pnpm.
-Examples can be found in the `example` folder. You must run `example/native` and `sample/web` at the same time.
+Examples can be found in the `example` folder. You must run `example/native` and `example/web` at the same time.
 ## Setup
 
 ```sh
