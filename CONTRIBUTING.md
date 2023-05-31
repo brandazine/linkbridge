@@ -13,6 +13,7 @@ $ pnpm build
 $ cd example/native
 $ pnpx pod-install
 $ pnpm ios
+$ pnpm extract-type --watch
 ```
 ## Web Start
 
