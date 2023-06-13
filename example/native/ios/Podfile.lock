@@ -343,6 +343,8 @@ PODS:
   - React-jsinspector (0.72.0-rc.1)
   - React-logger (0.72.0-rc.1):
     - glog
+  - react-native-webview (12.0.2):
+    - React-Core
   - React-NativeModulesApple (0.72.0-rc.1):
     - hermes-engine
     - React-callinvoker
@@ -435,6 +437,8 @@ PODS:
     - React-jsi (= 0.72.0-rc.1)
     - React-logger (= 0.72.0-rc.1)
     - React-perflogger (= 0.72.0-rc.1)
+  - RNInAppBrowser (3.7.0):
+    - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -485,6 +489,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -500,6 +505,7 @@ DEPENDENCIES:
   - React-rncore (from `../node_modules/react-native/ReactCommon`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -560,6 +566,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -590,6 +598,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNInAppBrowser:
+    :path: "../node_modules/react-native-inappbrowser-reborn"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -626,6 +636,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 414fbc6d50f1f89be2600b723a27c6070076d650
   React-jsinspector: 55ad52bf7b4102102c6a2ad6e881b06d56f8eb43
   React-logger: 264ccba40e268580a95fb9d514c315d2ec7339a5
+  react-native-webview: 203b6a1c7507737f777c91d7e10c30e7e67c1a17
   React-NativeModulesApple: 018405f985ae4488c4fe29deaaf2f8fc7a87f5d0
   React-perflogger: 0c4141a3eba3fe922d53b98900cfeeefe9d78de0
   React-RCTActionSheet: bde19fb7124b692941e772a7c83925bbeddfa0cb
@@ -641,6 +652,7 @@ SPEC CHECKSUMS:
   React-rncore: 87ab86939b3582b26c869863502ac36511b56c58
   React-runtimeexecutor: 7024fd5cb9245856e8ea7aaa51c8cbf015573d17
   ReactCommon: 828a0dd88e28f3d2e09e24d4d3e37465d48ab317
+  RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 86188e8e04cfc605be9f53ace41cb942da148207
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
