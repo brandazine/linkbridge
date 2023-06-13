@@ -9,7 +9,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    bridge.getName().then(setMessage);
+    bridge.getMessage().then(setMessage);
   }, []);
 
   return (
@@ -17,9 +17,9 @@ function App() {
       <h1>{message}</h1>
 
       <button
-        onClick={() => {
-          bridge.openInAppBrowser("https://github.com/brandazine/linkbridge");
-        }}
+        onClick={() =>
+          bridge.openInAppBrowser("https://github.com/brandazine/linkbridge")
+        }
       >
         open InAppBrowser
       </button>

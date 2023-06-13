@@ -1,12 +1,25 @@
 import { createNanoEvents } from "nanoevents";
 import { nanoid } from "nanoid/non-secure";
 
-const timeout = (timeout: number) =>
-  new Promise((_, reject) => {
-    setTimeout(() => {
-      reject(new Error("Timeout"));
-    }, timeout);
+const createTimeout = () => ({
+  timerId: 0,
+  timeout(timeout: number) {
+    return new Promise((_, reject) => {
+      this.timerId = setTimeout(() => {
+        reject(new Error("Timeout"));
+      }, timeout);
+    });
+  },
+});
+
+const createResolver = (method: string, eventId: string) => {
+  return new Promise((resolve) => {
+    const unbind = emitter.on(`${method}-${eventId}`, (data) => {
+      unbind();
+      resolve(data);
+    });
   });
+};
 
 const emitter = createNanoEvents();
 
@@ -30,13 +43,6 @@ export const createBridge = <T = unknown>(
       [method]: (...args: unknown[]) => {
         const eventId = nanoid();
 
-        const resolver = new Promise((resolve) => {
-          const unbind = emitter.on(`${method}-${eventId}`, (data) => {
-            unbind();
-            resolve(data);
-          });
-        });
-
         window.ReactNativeWebView.postMessage(
           JSON.stringify({
             type: "bridge",
@@ -46,7 +52,12 @@ export const createBridge = <T = unknown>(
           })
         );
 
-        return Promise.race([resolver, timeout(options.timeout)]);
+        const { timerId, timeout } = createTimeout();
+
+        return Promise.race([
+          createResolver(method, eventId),
+          timeout(options.timeout),
+        ]).finally(() => clearTimeout(timerId));
       },
     };
   }, {} as T);
