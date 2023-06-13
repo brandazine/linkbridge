@@ -1,61 +1,60 @@
-
 # linkbridge
+
 [![NPM](https://img.shields.io/npm/v/@linkbridge/native)](https://www.npmjs.com/package/@linkbridge/native)
 
-DX-friendly webview interface to bridge with react-native and the web.  
+linkbridge is a developer-friendly webview interface that acts as a bridge between React Native and web applications. It offers seamless communication between these platforms and provides a type-safe environment.
 
-Try registering a function in `bridge` in the react native code.  
-Available directly on the web and `Type-Safe`.  
+Inspired by the functionality of `tRPC`, linkbridge simplifies the communication process between `react-native-webview` and web applications.
 
-Inspired by `tRPC` and helps `react-native-webview` and `web` communicate.  
-  
 ![linkbridge](https://github.com/brandazine/linkbridge/assets/41789633/a96ecd6a-eb6b-4dd8-9805-421ff6dca26c)
 
 ## Installation
 
-- **React Native Project**
+### React Native Project
 
 ```sh
-$ pnpm install @linkbridge/native react-native-webview # or yarn / npm
+$ pnpm install @linkbridge/native react-native-webview
 ```
 
-- **Web Project**
+### Web Project
 
 ```sh
-$ pnpm install @linkbridge/web # or yarn / npm
+$ pnpm install @linkbridge/web
 ```
 
 ## Getting Started
 
-* React Native 
-```tsx
-import {createWebview} from '@linkbridge/native';
-import {bridge} from '@linkbridge/native';
+### React Native
 
+```tsx
+import { createWebview } from "@linkbridge/native";
+import { bridge } from "@linkbridge/native";
+
+// Register functions in the bridge object in your React Native code
 export const appBridge = bridge({
   getMessage: () => {
     return "Hello, I'm native";
   },
-  sum: (a: number,b: number) => {
+  sum: (a: number, b: number) => {
     return a + b;
   },
-  // ... Please write a react native function.
+  // ... Add more functions as needed
 });
 
-// Type to be exported to web.
-export type AppBridge = typeof appBridge; 
+// Export the bridge type to be used in the web application
+export type AppBridge = typeof appBridge;
 
-export const {Webview} = createWebview({
+export const { Webview } = createWebview({
   bridge: appBridge,
-  host: 'http://localhost:5173', // webview host
-  debug: true, // console.log is visible in native on the web.
+  host: "http://localhost:5173", // webview host
+  debug: true, // Enable console.log visibility in the native webview
 });
 
-// You can use the Webview that has been created.
+// Use the Webview component in your app
 function App(): JSX.Element {
   return (
-    <SafeAreaView style={{height: '100%'}}>
-      <Webview style={{height: '100%', width: '100%'}} />
+    <SafeAreaView style={{ height: "100%" }}>
+      <Webview style={{ height: "100%", width: "100%" }} />
     </SafeAreaView>
   );
 }
@@ -63,25 +62,29 @@ function App(): JSX.Element {
 export default App;
 ```
 
-* Web
+### Web
+
 ```tsx
 import { createBridge } from "@linkbridge/web";
-import type { AppBridge } from ""; // Type 'appBridge' declared by native must be imported.
+import type { AppBridge } from ""; // Import the type 'appBridge' declared in native
 
 const bridge = createBridge<AppBridge>();
 
-bridge.getMessage().then(message => console.log(message); // expect "Hello, I'm native"
-bridge.sum(1, 2).then(num => console.log(num); // expect 3
+bridge.getMessage().then((message) => console.log(message)); // Expecting "Hello, I'm native"
+bridge.sum(1, 2).then((num) => console.log(num)); // Expecting 3
 ```
 
 ## Type Export Guide
 
-A better way to use linkbridge is to export the type of `bride` declared in native to the web.
-1. You can use `monorepo` to export the type of native `bridge`. **(recommend)**
-2. You can use private npm registry to export the type of native `bridge`.
-3. You can use tsc to build a bridge decaration file to move the file.  
-   (Note. https://github.com/brandazine/linkbridge/blob/main/example/native/tsconfig.bridge.json)
-   
+For a better experience with linkbridge, it is recommended to export the type declaration of the native `bridge` object to the web application.
+
+There are a few ways to achieve this:
+
+1. Use a monorepo setup to export the type of the native `bridge`. **(recommended)**
+2. Utilize a private npm registry to export the type of the native `bridge`.
+3. Build a bridge declaration file using tsc and move the file as needed.
+   (Note: See [tsconfig.bridge.json](https://github.com/brandazine/linkbridge/blob/main/example/native/tsconfig.bridge.json) in the linkbridge repository for an example)
+
 ## Contributor Guide
-If you want a pull request for bugs or performance improvement, please check the following guide.  
-[CONTRIBUTING.md](https://github.com/brandazine/linkbridge/blob/main/CONTRIBUTING.md)
+
+If you would like to contribute to linkbridge by submitting bug fixes or performance improvements, please refer to our [CONTRIBUTING.md](https://github.com/brandazine/linkbridge/blob/main/CONTRIBUTING.md) guide for detailed instructions. We welcome and appreciate your contributions.

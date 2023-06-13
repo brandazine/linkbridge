@@ -18,10 +18,10 @@ export const bridge: Bridge = (procedures) => {
   return procedures;
 };
 
-type HandleBridgeArgs = {
+type HandleBridgeArgs<ArgType = unknown> = {
   bridge: ProceduresObject<Record<string, Procedure>>;
   method: string;
-  args?: unknown[];
+  args?: ArgType[];
   webview: WebView;
   eventId: string;
 };
@@ -44,6 +44,6 @@ export const handleBridge = async ({
   `);
 };
 
-export const INTEGRATIONS_SCRIPTS_BRIDGE = (bridgeNames: string) => dedent`
-    window.__bridgeSchema__ = [${bridgeNames}];
+export const INTEGRATIONS_SCRIPTS_BRIDGE = (bridgeNames: string[]) => dedent`
+    window.__bridgeSchema__ = [${bridgeNames.join(', ')}];
 `;

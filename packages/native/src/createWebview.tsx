@@ -23,11 +23,9 @@ export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
 
       const bridgeNames = useMemo(
         () =>
-          Object.values(bridge ?? {})
-            .map((func) => {
-              return `'${func.name}'`;
-            })
-            .join(),
+          Object.values(bridge ?? {}).map((func) => {
+            return `'${func.name}'`;
+          }),
         []
       );
 
