@@ -10,11 +10,11 @@ import {
   INTEGRATIONS_SCRIPTS_CONSOLE,
 } from './integrations';
 
-interface CreateWebviewArgs {
+type CreateWebviewArgs = {
   bridge: ProceduresObject<Record<string, Procedure>>;
   host: string;
   debug?: boolean;
-}
+};
 
 export const createWebview = ({ bridge, host, debug }: CreateWebviewArgs) => {
   return {
